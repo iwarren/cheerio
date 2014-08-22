@@ -38,6 +38,23 @@ describe('$(...)', function() {
       expect($pear).to.be.a($);
     });
 
+    it('(chaining) setting value and calling attr returns result', function() {
+      var pearAttr = $('.pear').attr('foo', 'bar').attr('foo');
+      expect(pearAttr).to.equal('bar');
+    });
+
+    it('(chaining) setting attr to null returns a $', function() {
+      var $pear = $('.pear').attr('foo', null);
+      expect($pear).to.be.a($);
+    });
+
+    it('(chaining) setting attr to undefined returns a $', function() {
+      var $pear = $('.pear').attr('foo', undefined);
+      expect($('#pear')).to.have.length(1);
+      expect($('#pear').attr('foo')).to.be(undefined);
+      expect($pear).to.be.a($);
+    });
+
     it('(key, value) : should set attr', function() {
       var $el = cheerio('<div></div> <div></div>').attr('class', 'pear');
 
